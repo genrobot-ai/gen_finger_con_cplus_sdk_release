@@ -244,7 +244,7 @@ Finger devices use one camera, so `camerarc` is the normal calibration command. 
 | OpenCV not found during build   | Install: `sudo apt install libopencv-dev pkg-config`              |
 | No camera preview               | Check udev camera symlinks; verify with `v4l2-ctl --list-devices` |
 
-## 9 Documentation
+## 9 Documentation Index
 
 | Description         | Link                                                     |
 | ------------------- | -------------------------------------------------------- |
