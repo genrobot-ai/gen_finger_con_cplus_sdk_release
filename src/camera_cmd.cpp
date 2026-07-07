@@ -16,13 +16,12 @@ namespace {
 
 void printUsage(const char* program) {
     std::cout << "Usage:\n"
-              << "  " << program << " {camerarc|camerarl|camerarr|MCUID|DMZEROSET|1234}\n"
-              << "  " << program << " {left|right} {camerarc|camerarl|camerarr|MCUID|DMZEROSET|1234}\n";
+              << "  " << program << " {camerarc|MCUID|1234}\n"
+              << "  " << program << " {left|right} {camerarc|MCUID|1234}\n";
 }
 
 bool isCommand(const std::string& value) {
-    return value == "camerarc" || value == "camerarl" || value == "camerarr" ||
-           value == "MCUID" || value == "DMZEROSET" || value == "1234";
+    return value == "camerarc" || value == "MCUID" || value == "1234";
 }
 
 bool isCameraCalibCommand(const std::string& command) {
@@ -64,8 +63,6 @@ int main(int argc, char* argv[]) {
 
     std::string yaml_filename;
     if (command == "camerarc") yaml_filename = "cam0_sensor_" + side + ".yaml";
-    if (command == "camerarl") yaml_filename = "cam1_sensor_" + side + ".yaml";
-    if (command == "camerarr") yaml_filename = "cam2_sensor_" + side + ".yaml";
 
     const std::string result_dir = "calib_result";
     if (!yaml_filename.empty()) {
@@ -100,7 +97,7 @@ int main(int argc, char* argv[]) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         bus.sendCameraCalibCmd(command);
 
-        if (command == "MCUID" || command == "DMZEROSET") {
+        if (command == "MCUID") {
             bus.waitForCalibResponse(3.0);
         } else if (isCameraCalibCommand(command)) {
             bus.waitForCalibResponse(2.0);
@@ -114,8 +111,6 @@ int main(int argc, char* argv[]) {
             std::cout << "Calibration OK !" << std::endl;
         } else if (command == "MCUID") {
             std::cout << "MCUID query executed" << std::endl;
-        } else if (command == "DMZEROSET") {
-            std::cout << "DMZEROSET command executed" << std::endl;
         } else {
             std::cout << "Finished sending command: " << command << std::endl;
             if (!yaml_filename.empty()) {

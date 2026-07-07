@@ -258,7 +258,7 @@ void DataBus::parsingLoop() {
                     && std::equal(magic.begin(), magic.end(), packet.begin())
                     && std::equal(magic.rbegin(), magic.rend(), packet.rbegin());
 
-                // MCUID / 1234 / DMZEROSET: print payload between das magics.
+                // MCUID / 1234: print payload between das magics.
                 if (yaml_filename_.empty() && magic_framed) {
                     const std::vector<uint8_t> middle(packet.begin() + magic.size(),
                                                         packet.end() - magic.size());
