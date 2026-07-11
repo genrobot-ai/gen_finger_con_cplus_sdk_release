@@ -10,7 +10,7 @@ After configuration, the corresponding USB port can recognize Gen Finger devices
 
 ## 1 Single Finger USB Port
 
-Each finger requires only **one serial port** and **one camera** (unlike the Gen Controller gripper with three cameras).
+Each finger requires only **one serial port** and **one camera** (unlike the Gen Controller finger with three cameras).
 
 The final configuration should look like the figure below.
 

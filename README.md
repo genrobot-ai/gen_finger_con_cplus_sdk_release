@@ -145,7 +145,7 @@ The `start_finger.cpp` script links against `libfinger_cpp_sdk_static.a` and rec
 
 Configure udev rules once per USB port before first use. The template is at [config/99-usb-serial.rules](./config/99-usb-serial.rules).
 
-Each finger requires only one serial port and one camera rule (unlike the Gen Controller gripper with three cameras).
+Each finger requires only one serial port and one camera rule (unlike the Gen Controller finger with three cameras).
 
 Summary:
 
